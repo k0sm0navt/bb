@@ -1,0 +1,12 @@
+<div class="col-sm-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{brand} {.model}</h3>
+        </div>
+        <div class="panel-body">
+            <p>Price</p>
+            <p>Pict</p>
+            <button type="button" class="btn btn-danger deleteCar"> Delete</button>
+        </div>
+    </div>
+</div>
