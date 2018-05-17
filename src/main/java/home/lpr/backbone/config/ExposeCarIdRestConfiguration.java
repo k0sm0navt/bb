@@ -1,6 +1,6 @@
-package com.nixsolutions.lpr.backbone.config;
+package home.lpr.backbone.config;
 
-import com.nixsolutions.lpr.backbone.entity.Car;
+import home.lpr.backbone.entity.Car;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.stereotype.Component;

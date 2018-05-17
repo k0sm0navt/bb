@@ -1,13 +1,11 @@
-package com.nixsolutions.lpr.backbone;
+package home.lpr.backbone;
 
-import com.nixsolutions.lpr.backbone.entity.Car;
-import com.nixsolutions.lpr.backbone.jpa.CarRepository;
+import home.lpr.backbone.entity.Car;
+import home.lpr.backbone.jpa.CarRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class BackboneApplication {

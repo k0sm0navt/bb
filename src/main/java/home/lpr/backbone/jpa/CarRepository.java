@@ -1,7 +1,7 @@
-package com.nixsolutions.lpr.backbone.jpa;
+package home.lpr.backbone.jpa;
 
 
-import com.nixsolutions.lpr.backbone.entity.Car;
+import home.lpr.backbone.entity.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

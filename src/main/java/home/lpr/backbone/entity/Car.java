@@ -1,4 +1,4 @@
-package com.nixsolutions.lpr.backbone.entity;
+package home.lpr.backbone.entity;
 
 
 import lombok.AllArgsConstructor;
