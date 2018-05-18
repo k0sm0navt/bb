@@ -6,4 +6,9 @@ export class CarModel extends Model {
         this.urlRoot = '/cars';
     }
 
+    parse (response) {
+       return response._embedded.cars;
+    }
+
+
 }
