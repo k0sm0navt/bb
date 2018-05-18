@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hello, Backbone!</h1>
+        <img src="pict/bb.GIF">
+        <p>BackboneJS is a lightweight JavaScript library that allows to develop and structure the client side
+            applications that run in a web browser. It offers MVC framework which abstracts data into models, DOM into
+            views and bind these two using events.</p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="col-sm-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{brand} {model}</h3>
+        </div>
+        <div class="panel-body">
+            <img src="pict/no-photo.jpg" width="300px">
+            <p>$ {price}</p>
+            <button type="button" class="btn btn-default editCar">Edit</button>
+            <button type="button" class="btn btn-danger deleteCar">Delete</button>
+        </div>
+    </div>
+</div>

@@ -5,17 +5,17 @@ import {CarCollection} from '../model/car.collection';
 import dust from 'dust.core';
 import template from 'templates/car.collection';
 
-const CarsView = View.extend( {
+const CarsView = View.extend({
 
-    events : {
-    "click .addCar": "addCar"
-},
-    initialize : function () {
+    events: {
+        'click .addCar': 'addCar'
+    },
+    initialize: function () {
         dust.render(template, {}, (err, out) => this.$el.html(out));
         this.cars = new CarCollection();
         this.cars.fetch({async: false});
         this.render();
-        this.listenTo(this.cars, "all", this.rerender);
+        this.listenTo(this.cars, 'all', this.rerender);
     },
 
     render: function () {
@@ -29,8 +29,6 @@ const CarsView = View.extend( {
         const modalView = new BaseModalView();
         modalView.show();
     }
-
-
 });
 export default CarsView;
 

@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Data
 @Entity
@@ -21,4 +20,5 @@ public class Car {
     private String brand;
     private String model;
     private Integer manufactureYear;
+    private String price;
 }

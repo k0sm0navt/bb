@@ -12,28 +12,28 @@ var BaseModalView = View.extend({
         'hidden': 'teardown'
     },
 
-    initialize: function() {
+    initialize: function () {
         _.bindAll(this, 'show', 'teardown', 'render', 'renderView');
         this.render();
     },
 
-    show: function() {
+    show: function () {
         this.$el.modal('show');
     },
 
-    teardown: function() {
+    teardown: function () {
         this.$el.data('modal', null);
         this.remove();
     },
 
-    render: function() {
+    render: function () {
         dust.render(template, {}, (err, out) => this.$el.html(out));
         return this;
     },
 
-    renderView: function(template) {
+    renderView: function (template) {
         this.$el.html(template());
-        this.$el.modal({show:false}); // dont show modal on instantiation
+        this.$el.modal({show: false}); // dont show modal on instantiation
     }
 });
 
