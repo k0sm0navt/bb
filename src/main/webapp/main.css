@@ -24,3 +24,7 @@ body {
 .contacts {
     text-align: left;
 }
+
+.glyphicon-search {
+    margin: 8px;
+}
