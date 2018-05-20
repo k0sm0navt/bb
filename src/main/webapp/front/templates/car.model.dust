@@ -5,8 +5,11 @@
         </div>
         <div class="panel-body">
             <img src="pict/no-photo.jpg" class="img-responsive">
-            <p>$ {price}</p>
-            <button type="button" class="btn btn-default editCar">Edit</button>
+            <p>Price: <span class="glyphicon glyphicon-bitcoin"></span>
+                {price}
+            </p>
+            <p>{manufactureYear} year</p>
+            <button type="button" class="btn btn-outline-secondary editCar">Edit</button>
             <button type="button" class="btn btn-danger deleteCar">Delete</button>
         </div>
     </div>

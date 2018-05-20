@@ -1,35 +1,60 @@
-import {View} from 'backbone';
+import {View, history} from 'backbone';
 import CarView from 'views/car.view';
 import BaseModalView from 'views/modal.view';
 import {CarCollection} from '../model/car.collection';
 import dust from 'dust.core';
 import template from 'templates/car.collection';
+import {CarModel} from "../model/car.model";
+import _ from 'underscore';
+
 
 const CarsView = View.extend({
+        events: {
+            'click .addCar': 'addCar',
+            'change #searchQuery': 'searchByQuery'
+        },
 
-    events: {
-        'click .addCar': 'addCar'
-    },
-    initialize: function () {
-        dust.render(template, {}, (err, out) => this.$el.html(out));
-        this.cars = new CarCollection();
-        this.cars.fetch({async: false});
-        this.render();
-        this.listenTo(this.cars, 'all', this.rerender);
-    },
+        initialize: function (models, options) {
+            this.options = options;
+            this.render();
+            this.listenTo(this.cars, 'add', this.render);
+            this.listenTo(this.cars, 'remove', this.render);
+        },
 
-    render: function () {
-        this.cars.each(car => {
-            let view = new CarView({model: car});
-            this.$el.append(view.render())
-        })
-    },
+        render: function () {
+            this.subViews && this.onLeave();
+            this.cars = new CarCollection({}, this.options);
+            this.cars.fetch({async: false});
+            this.cars.page.pages = _.range(this.cars.page.totalPages);
+            this.subViews = this.subViews || [];
+            dust.render(template, this.cars.page, (err, out) => this.$el.html(out));
+            this.cars.each(car => this.appendCar(car));
+            $('#main-container').append(this.el);
+        },
 
-    addCar: function () {
-        const modalView = new BaseModalView();
-        modalView.show();
-    }
-});
+        appendCar: function (car) {
+            let view = new CarView({model: car}, {cars: this.cars});
+            this.subViews.push(view);
+            this.$el.children('#table').append(view.render())
+        },
+
+        addCar: function () {
+            let modalView = new BaseModalView(new CarModel());
+            modalView.show(this.cars);
+        },
+
+        onLeave: function () {
+            this.subViews.forEach(view => view.remove())
+        },
+
+        searchByQuery: function () {
+            this.options.searchQuery = $('#searchQuery').val();
+            this.options.currentPage = 0;
+            Backbone.history.navigate('#');
+            this.render();
+        }
+    })
+;
 export default CarsView;
 
 

@@ -1,14 +1,11 @@
 requirejs.config({
     paths: {
         backbone: "../vendor/backbone/backbone",
+        'backbone-validation': "../vendor/backbone-validation/dist/backbone-validation-amd",
         jquery: "../vendor/jquery/dist/jquery",
         lodash: "../vendor/lodash/lodash",
         underscore: "../vendor/underscore/underscore",
         "dust.core": "../vendor/dustjs-linkedin/dist/dust-core",
-
-        // 'templates/car': 'templates/car',
-        // 'templates/car.collection': 'templates/car.collection'
-
     },
     shim: {
         'dustjs-linkedin': {
@@ -18,9 +15,7 @@ requirejs.config({
 
 });
 define.amd.dust = true;
-
-require(['app'], function (App) {
-    new App;
+require(['app'], function (Application) {
 });
 
 

@@ -13,10 +13,11 @@
     "require-dir": "^1.0.0",
     "requirejs": "^2.3.5",
     "run-sequence": "^2.2.1",
-    "dustjs-linkedin": "^2.6.1"
+    "dustjs-linkedin": "^2.6.1",
+    "dustjs-helpers": "^1.7.4"
   },
   "scripts": {
     "compile": "cd src/main/webapp/dist && dustc -as templates/*.dust",
-    "postinstall": "gulp default"
+    "postinstall": "gulp default && cd src/main/webapp/dist && dustc -as templates/*.dust"
   }
 }

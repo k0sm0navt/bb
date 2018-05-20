@@ -1,39 +1,45 @@
 import {View} from 'backbone';
+import Validation from 'backbone-validation';
 import dust from 'dust.core';
 import template from 'templates/add.modal';
 
-var BaseModalView = View.extend({
+const BaseModalView = View.extend({
 
     id: 'base-modal',
     className: 'modal fade',
     template: 'modals/BaseModal',
 
     events: {
-        'hidden': 'teardown'
+        'click .saveCar': 'saveCar',
+        'click .closeModal': 'close',
+        'hidden.bs.modal': 'remove'
     },
 
-    initialize: function () {
-        _.bindAll(this, 'show', 'teardown', 'render', 'renderView');
+    initialize: function (model) {
+        this.model = model;
+        Validation.bind(this);
         this.render();
     },
 
-    show: function () {
+    show: function (cars) {
+        this.cars = cars;
         this.$el.modal('show');
     },
 
-    teardown: function () {
-        this.$el.data('modal', null);
-        this.remove();
-    },
-
     render: function () {
-        dust.render(template, {}, (err, out) => this.$el.html(out));
-        return this;
+        dust.render(template, this.model.toJSON(), (err, out) => this.$el.html(out));
+        $('#addModal').append(this.el);
+
     },
 
-    renderView: function (template) {
-        this.$el.html(template());
-        this.$el.modal({show: false}); // dont show modal on instantiation
+    saveCar: function (event) {
+        event.preventDefault();
+        this.$('input').each((i, input) => this.model.set(input.name, input.value));
+        if (this.model.isValid(true)) {
+            this.model.save();
+            this.cars && this.cars.add(this.model);
+            this.$el.modal('toggle');
+        }
     }
 });
 
