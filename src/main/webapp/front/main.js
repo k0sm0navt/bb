@@ -6,6 +6,7 @@ requirejs.config({
         lodash: "../vendor/lodash/lodash",
         underscore: "../vendor/underscore/underscore",
         "dust.core": "../vendor/dustjs-linkedin/dist/dust-core",
+        "dust-helpers": "../vendor/dustjs-linkedin-helpers/dist/dust-helpers",
     },
     shim: {
         'dustjs-linkedin': {

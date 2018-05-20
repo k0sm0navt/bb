@@ -1,4 +1,4 @@
-import {Router, history} from 'backbone';
+import {history, Router} from 'backbone';
 import CarsView from '../views/cars.view';
 import AboutView from '../views/about.view';
 import ContactView from '../views/contact.view';
@@ -23,14 +23,14 @@ const MainRouter = Router.extend({
         this.clearView(Application.currentView);
         let searchQuery = Application.currentView && Application.currentView.options && Application.currentView.options.searchQuery;
         Application.currentView = new CarsView({}, {
-            currentPage: page,
+            currentPage: page || 0,
             size: 6,
             searchQuery: searchQuery
         });
     },
     about: function () {
         this.updateActiveLinks('about');
-        this.clearView(Application.currentView)
+        this.clearView(Application.currentView);
         Application.currentView = new AboutView();
     },
 

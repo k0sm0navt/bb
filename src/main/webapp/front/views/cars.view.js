@@ -1,8 +1,9 @@
-import {View, history} from 'backbone';
+import {history, View} from 'backbone';
 import CarView from 'views/car.view';
 import BaseModalView from 'views/modal.view';
 import {CarCollection} from '../model/car.collection';
 import dust from 'dust.core';
+import dusthelpers from 'dust-helpers';
 import template from 'templates/car.collection';
 import {CarModel} from "../model/car.model";
 import _ from 'underscore';
@@ -11,20 +12,19 @@ import _ from 'underscore';
 const CarsView = View.extend({
         events: {
             'click .addCar': 'addCar',
-            'change #searchQuery': 'searchByQuery'
+            'change #searchQuery': 'searchByQuery',
         },
 
         initialize: function (models, options) {
             this.options = options;
+            this.cars = new CarCollection({}, this.options);
             this.render();
-            this.listenTo(this.cars, 'add', this.render);
-            this.listenTo(this.cars, 'remove', this.render);
+            this.listenTo(this.cars, 'changing', this.render);
         },
 
         render: function () {
-            this.subViews && this.onLeave();
-            this.cars = new CarCollection({}, this.options);
             this.cars.fetch({async: false});
+            this.subViews && this.onLeave();
             this.cars.page.pages = _.range(this.cars.page.totalPages);
             this.subViews = this.subViews || [];
             dust.render(template, this.cars.page, (err, out) => this.$el.html(out));

@@ -20,3 +20,7 @@ body {
 .img-responsive {
     margin: 0 auto;
 }
+
+.contacts {
+    text-align: left;
+}

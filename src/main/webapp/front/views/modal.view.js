@@ -37,7 +37,7 @@ const BaseModalView = View.extend({
         this.$('input').each((i, input) => this.model.set(input.name, input.value));
         if (this.model.isValid(true)) {
             this.model.save();
-            this.cars && this.cars.add(this.model);
+            this.cars && this.cars.trigger('changing');
             this.$el.modal('toggle');
         }
     }
