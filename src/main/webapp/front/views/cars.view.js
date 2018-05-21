@@ -50,7 +50,7 @@ const CarsView = View.extend({
         searchByQuery: function () {
             this.options.searchQuery = $('#searchQuery').val();
             this.options.currentPage = 0;
-            Backbone.history.navigate('#');
+            history.navigate('#');
             this.render();
         }
     })

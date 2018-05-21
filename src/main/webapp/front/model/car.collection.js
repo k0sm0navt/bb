@@ -7,7 +7,7 @@ export class CarCollection extends Collection {
         super(models, options);
         this.options = options;
         this.model = CarModel;
-        this.url = () =>this.getBaseUrl() + '?' + this.getParamQuery();
+        this.url = () => this.getBaseUrl() + '?' + this.getParamQuery();
         this.parse = (response) => {
             this.page = response.page;
             this.page.searchQuery = this.options.searchQuery;
