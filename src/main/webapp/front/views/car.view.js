@@ -23,8 +23,7 @@ const CarView = View.extend({
     },
 
     deleteCar: function () {
-        this.model.destroy();
-        this.options.cars.trigger('changing');
+      this.model.destroy().done(()=> this.options.cars.trigger('changing'));
     },
 
     editCar: function () {
